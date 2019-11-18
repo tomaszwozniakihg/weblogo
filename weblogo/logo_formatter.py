@@ -186,7 +186,8 @@ def eps_formatter(logodata: LogoData, logoformat: LogoFormat) -> bytes:
                 color = logoformat.color_scheme.symbol_color(seq_index, c[1], rank)
                 data.append(" %f %f %s (%s) ShowSymbol" % (
                     fraction_width, c[0] * stack_height / C,
-                    format_color(color), c[1]))
+                    format_color(color), 
+                    c[1].replace('(', '\(').replace(')', '\)')))
 
         # Draw error bar on top of logo. Replaced by DrawErrorbarFirst above.
         if logodata.entropy_interval is not None and conv_factor and C > 0.0:
